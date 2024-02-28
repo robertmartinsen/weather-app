@@ -3,6 +3,7 @@ export function manageNavigation() {
   const countryTitle = document.querySelector(".navigation-container h1")
   const countriesContainer = document.getElementById("countriesContainer")
   const citiesContainer = document.getElementById("citiesContainer")
+  const searchInput = document.getElementById("searchInput")
 
   const history = []
 
@@ -10,10 +11,12 @@ export function manageNavigation() {
     if (history.length === 0) {
       backBtnContainer.style.display = "none"
       countryTitle.style.display = "none"
+      searchInput.placeholder = "Enter Country"
     } else {
       backBtnContainer.style.display = "block"
       countryTitle.style.display = "block"
       countryTitle.textContent = history[history.length - 1]
+      searchInput.placeholder = "Enter City"
     }
   }
 
@@ -22,7 +25,7 @@ export function manageNavigation() {
     updateNavigation()
     countriesContainer.style.display = "none"
     citiesContainer.style.display = "block"
-    countryTitle.textContent = country 
+    countryTitle.textContent = country
   }
 
   function showCountries() {
@@ -31,7 +34,6 @@ export function manageNavigation() {
     countriesContainer.style.display = "block"
     citiesContainer.style.display = "none"
   }
-
 
   countriesContainer.addEventListener("click", function (event) {
     const countryContainer = event.target.closest(".countries-container")
@@ -46,5 +48,5 @@ export function manageNavigation() {
     showCountries()
   })
 
-  updateNavigation() 
+  updateNavigation()
 }

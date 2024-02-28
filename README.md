@@ -18,7 +18,7 @@ Develop a modern front-end website for a weather app. Use the openweather API fo
 ### Technologies Used
 
 - HTML
-- SCSS
+- CSS
 - Javascript
 - Bootstrap
 

@@ -123,20 +123,23 @@
             </div>
           </div>
 
-          <div class="search">
-            <input type="text" placeholder="Enter city or country">
+          <div class="search" id="countrySearchContainer">
+            <input type="text" placeholder="Enter Country" id="searchInput">
             <button>
-              <span
-              class="glyphicon glyphicon-search"
-              aria-hidden="true"
-            ></span>
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             </button>
           </div>
 
           
           <div class="countries-scroll-container">
-            <div id="countriesContainer"></div>          
-            <div id="citiesContainer"></div>
+            <div id="countriesContainer">
+              <div class="countries-container" data-type="country">
+              </div>
+            </div>          
+            <div id="citiesContainer">
+              <div class="cities-container" data-type="city">
+              </div>
+            </div>
         </div>
 
         </div>

@@ -8,4 +8,5 @@ window.onload = function () {
   populateCountries()
   manageNavigation()
   manageSearch()
+  
 }

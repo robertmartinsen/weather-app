@@ -5,6 +5,7 @@ import { fetchFlagsForCountries } from "./../api/fetchFlags.js"
 export function populateCountries() {
   const countriesContainer = document.getElementById("countriesContainer")
   const citiesContainer = document.getElementById("citiesContainer")
+  const existingCityContainers = new Map()
 
   fetchCountries()
     .then(async (countries) => {
@@ -65,25 +66,32 @@ export function populateCountries() {
     searchInput.value = ""
 
     const cities = await fetchCities(selectedCountry)
+
     cities.forEach((city) => {
-      const cityContainer = document.createElement("div")
-      cityContainer.classList.add("cities-container")
+      const cityName = city.toLowerCase()
+      if (existingCityContainers.has(cityName)) {
+        existingCityContainers.get(cityName).classList.remove("hidden")
+      } else {
+        const cityContainer = document.createElement("div")
+        cityContainer.classList.add("cities-container")
 
-      const cityNameDiv = document.createElement("div")
-      cityNameDiv.classList.add("city-name")
+        const cityNameDiv = document.createElement("div")
+        cityNameDiv.classList.add("city-name")
 
-      const cityName = document.createElement("p")
-      cityName.textContent = city
+        const cityNameElem = document.createElement("p")
+        cityNameElem.textContent = city
 
-      cityNameDiv.appendChild(cityName)
-      cityContainer.appendChild(cityNameDiv)
+        cityNameDiv.appendChild(cityNameElem)
+        cityContainer.appendChild(cityNameDiv)
 
-      citiesContainer.appendChild(cityContainer)
+        citiesContainer.appendChild(cityContainer)
 
-      cityContainer.addEventListener("click", () => {
-        document.querySelector(".close-btn").click()
-      })
+        existingCityContainers.set(cityName, cityContainer)
+
+        cityContainer.addEventListener("click", () => {
+          document.querySelector(".close-btn").click()
+        })
+      }
     })
   }
 }
-
